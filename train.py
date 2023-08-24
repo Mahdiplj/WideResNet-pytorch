@@ -237,7 +237,7 @@ def validate(val_loader, model, criterion, epoch):
     return top1.avg
 
 
-def save_checkpoint(state, is_best, filename='checkpoint.pth.tar'):
+def save_checkpoint(state, is_best, filename='checkpoint.pth'):
     """Saves checkpoint to disk"""
     directory = "runs/%s/"%(args.name)
     if not os.path.exists(directory):
@@ -245,7 +245,7 @@ def save_checkpoint(state, is_best, filename='checkpoint.pth.tar'):
     filename = directory + filename
     torch.save(state, filename)
     if is_best:
-        shutil.copyfile(filename, 'runs/%s/'%(args.name) + 'model_best.pth.tar')
+        shutil.copyfile(filename, 'runs/%s/'%(args.name) + 'model_best.pth')
 
 class AverageMeter(object):
     """Computes and stores the average and current value"""
