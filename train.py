@@ -234,7 +234,7 @@ def validate(val_loader, model, criterion, epoch):
     # if args.tensorboard:
     #     log_value('val_loss', losses.avg, epoch)
     #     log_value('val_acc', top1.avg, epoch)
-    # return top1.avg
+    return top1.avg
 
 
 def save_checkpoint(state, is_best, filename='checkpoint.pth'):
