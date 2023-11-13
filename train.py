@@ -17,7 +17,7 @@ from torch.autograd import Variable
 from wideresnet import WideResNet
 
 # used for logging to TensorBoard
-from tensorboard_logger import configure, log_value
+# from tensorboard_logger import configure, log_value
 
 parser = argparse.ArgumentParser(description='PyTorch WideResNet Training')
 parser.add_argument('--dataset', default='cifar10', type=str,
@@ -59,8 +59,8 @@ best_prec1 = 0
 def main():
     global args, best_prec1
     args = parser.parse_args()
-    if args.tensorboard:
-        configure("runs/%s" % (args.name))
+    # if args.tensorboard:
+    # configure("runs/%s" % (args.name))
 
     # Data loading code
     normalize = transforms.Normalize(mean=[x/255.0 for x in [125.3, 123.0, 113.9]],
@@ -195,9 +195,9 @@ def train(train_loader, model, criterion, optimizer, scheduler, epoch):
                       epoch, i, len(train_loader), batch_time=batch_time,
                       loss=losses, top1=top1))
     # log to TensorBoard
-    if args.tensorboard:
-        log_value('train_loss', losses.avg, epoch)
-        log_value('train_acc', top1.avg, epoch)
+    # if args.tensorboard:
+        # log_value('train_loss', losses.avg, epoch)
+        # log_value('train_acc', top1.avg, epoch)
 
 
 def validate(val_loader, model, criterion, epoch):
@@ -238,9 +238,9 @@ def validate(val_loader, model, criterion, epoch):
 
     print(' * Prec@1 {top1.avg:.3f}'.format(top1=top1))
     # log to TensorBoard
-    if args.tensorboard:
-        log_value('val_loss', losses.avg, epoch)
-        log_value('val_acc', top1.avg, epoch)
+    # if args.tensorboard:
+    # log_value('val_loss', losses.avg, epoch)
+    # log_value('val_acc', top1.avg, epoch)
     return top1.avg
 
 
