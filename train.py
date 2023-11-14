@@ -63,8 +63,8 @@ def main():
     # configure("runs/%s" % (args.name))
 
     # Data loading code
-    normalize = transforms.Normalize(mean=[x/255.0 for x in [125.3, 123.0, 113.9]],
-                                     std=[x/255.0 for x in [63.0, 62.1, 66.7]])
+    # normalize = transforms.Normalize(mean=[x/255.0 for x in [125.3, 123.0, 113.9]],
+    #                                  std=[x/255.0 for x in [63.0, 62.1, 66.7]])
 
     if args.augment:
         transform_train = transforms.Compose([
@@ -75,16 +75,16 @@ def main():
             transforms.RandomCrop(32),
             transforms.RandomHorizontalFlip(),
             transforms.ToTensor(),
-            normalize,
+            # normalize,
         ])
     else:
         transform_train = transforms.Compose([
             transforms.ToTensor(),
-            normalize,
+            # normalize,
         ])
     transform_test = transforms.Compose([
         transforms.ToTensor(),
-        normalize
+        # normalize
     ])
 
     kwargs = {'num_workers': 1, 'pin_memory': True}
